@@ -7,7 +7,7 @@
 
 #  Last changed:   	@Date: 2017/01/2 17:23
 #  Changed by:     	@Author: fabrizio pietrucci
-#  Version:			@Verision 1.0
+#  Version:  		@Verision 1.0
 
 ####### SETTINGS #######
 
