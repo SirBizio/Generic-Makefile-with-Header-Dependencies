@@ -5,7 +5,7 @@
 #  License:       	See the end of this file for license information
 #  Created:        	December 17, 2016
 
-#  Last changed:   	@Date: 2017/01/2 17:23
+#  Last changed:   	@Date: 2017/01/2 3:18
 #  Changed by:     	@Author: fabrizio pietrucci
 #  Version:  		@Verision 1.0
 
@@ -47,9 +47,9 @@ SRC_EXT = c
 rwildcard = $(foreach d, $(wildcard $1*), $(call rwildcard,$d/,$2) \
 						$(filter $(subst *,%,$2), $d))
 
-# Get all static libraires il LIBSPATH (used in order to relink
+# Get all static libraires in LIBS_PATH (used in order to relink
 # the program if one of the static libs changes)
-STATICLIBS = $(call rwildcard, $(LIBSPATH), *.a)
+STATICLIBS = $(call rwildcard, $(LIBS_PATH), *.a)
 # Get all the source files in SRC
 SOURCES = $(call rwildcard, $(SRC), *.$(SRC_EXT))
 # Set object files names from source file names (used in order
