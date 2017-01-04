@@ -27,9 +27,12 @@ BIN = bin
 INST_PATH =
 
 # Path containing project libraries (optional)
-LIBS_PATH = lib
+LIBS_PATH = -L lib
+# Path in wich static libraries will be put (must be one of the path in LIBS_PATH or none).
+# This will be used to relink the project if one of the static lib changes (optional).
+STATIC_PATH = lib
 # Path containing external header files (optional)
-INCLUDES = lib/include
+INCLUDES = -I lib/include
 
 #Linker flags
 LDFLAGS =
@@ -49,7 +52,7 @@ rwildcard = $(foreach d, $(wildcard $1*), $(call rwildcard,$d/,$2) \
 
 # Get all static libraires in LIBS_PATH (used in order to relink
 # the program if one of the static libs changes)
-STATICLIBS = $(call rwildcard, $(LIBS_PATH), *.a)
+STATICLIBS = $(call rwildcard, $(STATIC_PATH), *.a)
 # Get all the source files in SRC
 SOURCES = $(call rwildcard, $(SRC), *.$(SRC_EXT))
 # Set object files names from source file names (used in order
@@ -78,7 +81,7 @@ all: $(BIN)/$(EXEC_NAME)
 # Links the object files into an executable
 $(BIN)/$(EXEC_NAME): $(OBJECTS) $(STATICLIBS)
 	@echo "Linking $@..."
-	@$(CC) $(CFLAGS) -I$(INCLUDES) $(OBJECTS) $(LDFLAGS) -o $@ -L$(LIBS_PATH) $(LIBS)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS) $(LDFLAGS) -o $@ $(LIBS_PATH) $(LIBS)
 
 # Rules for the source files. It compiles source files if obj files are outdated.
 # It also creates haeder dependency files (.d files) used to add headers as
