@@ -27,12 +27,12 @@ BIN = bin
 INST_PATH =
 
 # Path containing project libraries (optional)
-LIBS_PATH = -L lib
+LIBS_PATH = -Llib
 # Path in wich static libraries will be put (must be one of the path in LIBS_PATH or none).
 # This will be used to relink the project if one of the static lib changes (optional).
 STATIC_PATH = lib
 # Path containing external header files (optional)
-INCLUDES = -I lib/include
+INCLUDES = -Ilib/include
 
 #Linker flags
 LDFLAGS =
@@ -88,7 +88,7 @@ $(BIN)/$(EXEC_NAME): $(OBJECTS) $(STATICLIBS)
 # dependencies for the object files with -include later.
 $(BUILD)/%.o: $(SRC)/%.$(SRC_EXT)
 	@echo "[CC] Compiling $< -> $@"
-	@$(CC) -c $(CFLAGS) -I$(INCLUDES) -MP -MMD $< -o $@
+	@$(CC) -c $(CFLAGS) $(INCLUDES) -MP -MMD $< -o $@
 
 # Header dependencies. Adds the rules in the .d files, if they exists, in order to
 # add headers as dependencies of obj files (see .d files in BUILD for more info).
