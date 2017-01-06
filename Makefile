@@ -64,9 +64,11 @@ DEPEND = $(OBJECTS:.o=.d)
 # Main target, it creates the folders needed by the build and launches 'all' target
 .PHONY: build
 build: createdirs
-	@echo "Beginning build...\n"
+	@echo "Beginning build..."
+	@echo ""
 	@$(MAKE) all --no-print-directory
-	@echo "\nBuild successful"
+	@echo ""
+	@echo "Build successful"
 
 # Creates the needed directories
 .PHONY: createdirs
