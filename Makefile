@@ -5,7 +5,7 @@
 #  License:       	See the end of this file for license information
 #  Created:        	December 17, 2016
 
-#  Last changed:   	@Date: 2017/01/2 3:18
+#  Last changed:   	@Date: 2017/2/21 11:13
 #  Changed by:     	@Author: fabrizio pietrucci
 #  Version:  		@Verision 1.0
 
@@ -28,7 +28,7 @@ INST_PATH =
 
 # Path containing project libraries (optional)
 LIBS_PATH = -Llib
-# Path in wich static libraries will be put (must be one of the path in LIBS_PATH or none).
+# Path in wich static libraries will be placed (must be one of the path in LIBS_PATH or none).
 # This will be used to relink the project if one of the static lib changes (optional).
 STATIC_PATH = lib
 # Path containing external header files (optional)
@@ -46,7 +46,7 @@ SRC_EXT = c
 
 ###### SETTINGS END ######
 
-# Recursive wildcard, used to get all modified c files in SRC directory recursively
+# Recursive wildcard, used to get all c files in SRC directory recursively
 rwildcard = $(foreach d, $(wildcard $1*), $(call rwildcard,$d/,$2) \
 						$(filter $(subst *,%,$2), $d))
 
@@ -109,7 +109,7 @@ uninstall:
 .PHONY: clean
 clean:
 	@echo "Deleting directories..."
-	@rm -rf bin/ build/
+	@rm -rf $(BIN) $(BUILD)
 
 # Copyright (C) 2016 Fabrizio Pietrucci
 
