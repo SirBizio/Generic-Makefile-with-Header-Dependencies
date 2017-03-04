@@ -19,7 +19,7 @@ EXEC_NAME = matmul
 
 # Where to search for source code
 SRC = src
-# Folder in which the object files will be put
+# Folder in which the object files will be placed
 BUILD = build
 # Folder in which the binary will be generated
 BIN = bin
